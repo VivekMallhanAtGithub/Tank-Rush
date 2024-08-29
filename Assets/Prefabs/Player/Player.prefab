@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5195795426617489823}
   - component: {fileID: 1489923134715974622}
   - component: {fileID: 7064109041756971744}
+  - component: {fileID: 8518866985068657613}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -167,6 +168,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: b027f725-edc0-47a8-9c5b-fc49dec9ace1
     m_ActionName: PlayerGroundMovement/MouseLook[/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d278f0fd-9bef-4175-a83b-1c52ff4a9ff3
+    m_ActionName: PlayerGroundMovement/Shoot[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerGroundMovement
@@ -187,6 +192,22 @@ MonoBehaviour:
   frameDistance: 5
   mass: 20
   lookSpeed: 2
+  bulletFrequency: 1
+  bulletTimer: 0
+  bulletPrefab: {fileID: 0}
+--- !u!114 &8518866985068657613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5610556296888894689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e682aed276ee2ec48b29503ac36d4a05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!1 &6221947089567629242
 GameObject:
   m_ObjectHideFlags: 0

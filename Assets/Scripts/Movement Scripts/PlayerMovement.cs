@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Shoot()
     {
-        Instantiate(bulletPrefab, transform.position + transform.forward, Quaternion.identity);
+        Instantiate(bulletPrefab, transform.position + transform.forward, Quaternion.Euler(transform.forward));
     }
 
 }

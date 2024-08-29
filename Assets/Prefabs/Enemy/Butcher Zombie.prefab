@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 3475314681245131919}
   - component: {fileID: 8532577653665204731}
   - component: {fileID: 5122924882942339577}
+  - component: {fileID: 6700830440436401400}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Butcher Zombie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b4a1bac1a64d7ad469ce8d6a9166c361, type: 2}
+  - {fileID: 2100000, guid: 944785e70d035384d811767b27601d9e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -118,9 +119,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5088bc3f0c25424ab44d4fd08537fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyspeed: 6
-  enemyCurrentHealth: 0
-  enemyDamage: 0
-  enemySize: 0
+  enemyspeed: 4.5
   enemyTarget: {fileID: 0}
   rotationSpeed: 50
+--- !u!114 &6700830440436401400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2837398744150704502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e682aed276ee2ec48b29503ac36d4a05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 200
+  damage1: 15
+  damage2: 20
