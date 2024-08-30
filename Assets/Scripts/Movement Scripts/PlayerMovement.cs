@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     public float bulletTimer = 0f;
     public GameObject bulletPrefab;
 
+    public HealthAndDamage hdComponent;
+
     public void IAAccelerate(InputAction.CallbackContext context)
     {
         movementValues = context.ReadValue<Vector2>();
@@ -22,7 +24,10 @@ public class PlayerMovement : MonoBehaviour
     }
     public void IAShoot(InputAction.CallbackContext context)
     {
-        Shoot();
+        if(context.started == true)
+        {
+            Shoot();
+        }
     }
 
     public void IALooking(InputAction.CallbackContext context)
@@ -34,6 +39,10 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
        
+    }
+    private void Awake()
+    {
+        hdComponent = gameObject.GetComponent<HealthAndDamage>();
     }
 
     // Start is called before the first frame update 
@@ -52,7 +61,11 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Shoot()
     {
-        Instantiate(bulletPrefab, transform.position + transform.forward, Quaternion.Euler(transform.forward));
+        GameObject spawnedBullet;
+        Vector3 direction = (transform.forward * 100f) - transform.position;
+        spawnedBullet = Instantiate(bulletPrefab, transform.position + transform.forward, Quaternion.identity);
+        spawnedBullet.GetComponent<BaseBulletBehaviour>().SetBulletDirection(direction);
+        spawnedBullet.GetComponent<BaseBulletBehaviour>().bulletDamage = hdComponent.damage1;
     }
 
 }
