@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
 {
-    private float distanceToplayer;
+    public float distanceToplayer;
     public float enemyspeed;
     public Transform enemyTarget;
     public float rotationSpeed;
@@ -18,7 +18,10 @@ public class EnemyBase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //transform.LookAt(player);
+        if(enemyTarget == null)
+        {
+            return;
+        }
         distanceToplayer = Vector3.Distance(transform.position, enemyTarget.position);
 
         transform.position = transform.position + (transform.forward * enemyspeed * Time.deltaTime);

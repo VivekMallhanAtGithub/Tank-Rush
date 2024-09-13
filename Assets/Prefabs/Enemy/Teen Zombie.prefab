@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8532577653665204731}
   - component: {fileID: 5122924882942339577}
   - component: {fileID: 4428102256243177973}
+  - component: {fileID: 8853914433515071721}
   m_Layer: 6
   m_Name: Teen Zombie
   m_TagString: Untagged
@@ -119,6 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5088bc3f0c25424ab44d4fd08537fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distanceToplayer: 0
   enemyspeed: 3
   enemyTarget: {fileID: 0}
   rotationSpeed: 50
@@ -134,5 +136,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e682aed276ee2ec48b29503ac36d4a05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 100
   health: 100
   damage1: 10
+--- !u!114 &8853914433515071721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2837398744150704502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d5728a305c2fc42a4975ac8b3f1a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

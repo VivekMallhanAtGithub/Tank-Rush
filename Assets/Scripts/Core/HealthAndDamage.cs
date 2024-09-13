@@ -8,24 +8,65 @@ public class HealthAndDamage : MonoBehaviour
     public float health = 100f;
     public float damage1 = 30f;
 
-    delegate void DamageTakenDelegate(float _incomingDamage);
+    private PlayerMovement movementComponent;
+    private PlayerUI uiComponent;
 
-    DamageTakenDelegate delegate_DamageTaken;
+    private void Awake()
+    {
+        movementComponent = GetComponent<PlayerMovement>();
+        if(movementComponent != null)
+        {
+            uiComponent = GetComponent<PlayerUI>();
+        }
+        else
+        {
+            
+        }
+    }
 
     private void Start()
     {
-        delegate_DamageTaken = AcceptDamage;
+             
+    }
+
+    public void AcceptDamage()
+    {
+        health -= damage1;
+
+        if (movementComponent != null)
+        {
+            movementComponent.PlayerMovementDamageTakenSignal(damage1);
+        }
+
+        if (uiComponent != null)
+        {
+            uiComponent.UpdateHealthBar(GetHealthRatio());
+        }
+
+        if (health < 0)
+        {
+            Death();
+        }
     }
 
     public void AcceptDamage(float incomingDamage)
     {
-        health = health - incomingDamage;
+        health -= incomingDamage;
 
-        if(health<0)
+        if (movementComponent != null)
+        {
+            movementComponent.PlayerMovementDamageTakenSignal(incomingDamage);
+        }
+
+        if(uiComponent!=null)
+        {
+            uiComponent.UpdateHealthBar(GetHealthRatio());
+        }
+
+        if(health < 0)
         {
             Death();
         }
-
     }
 
     public void Death()
@@ -38,6 +79,4 @@ public class HealthAndDamage : MonoBehaviour
     {
         return health / maxHealth;
     }
-
-    
 }

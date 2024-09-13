@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     public bool canShoot = true;
     public float shootingCooldownTimer = 0.5f;
 
+    public static PlayerMovement Instance;
+
     public void IAAccelerate(InputAction.CallbackContext context)
     {
         movementValues = context.ReadValue<Vector2>();
@@ -35,8 +37,13 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
         hdComponent = gameObject.GetComponent<HealthAndDamage>();
     }
 
@@ -98,5 +105,9 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(seconds);
 
         canShoot = true;
+    }
+    public void PlayerMovementDamageTakenSignal(float damage)
+    {
+        Debug.Log("Player Damage Signal");
     }
 }
