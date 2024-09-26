@@ -4,43 +4,43 @@ using UnityEngine;
 
 public class ET1_Attack : MonoBehaviour
 {
-    EnemyBase baseEnemyScript;
-    private bool canAttack;
+    private EnemyBase baseEnemyScript;
+    public float attackCooldown;
+    public bool canAttack;
+    float timerValue;
 
     private void Awake()
     {
         baseEnemyScript = GetComponent<EnemyBase>();
     }
-    void Start()
+
+    private void FixedUpdate()
     {
-        canAttack = true;
+        if (canAttack == false)
+        {
+            timerValue += 0.02f;
+            if (timerValue > attackCooldown)
+            {
+                timerValue = 0f;
+                canAttack = true;
+            }
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (PlayerMovement.Instance == null)
+        if (baseEnemyScript.distanceToplayer < 0.3f && canAttack == true)
         {
-            return;
-        }
+            float outGoingDamage = GetComponent<HealthAndDamage>().damage1;
+            if (PlayerMovement.Instance != null)
+            {
+                PlayerMovement.Instance.gameObject.GetComponent<HealthAndDamage>().AcceptDamage(outGoingDamage);
+                canAttack = false;
+                baseEnemyScript.enemyspeed = 1;
+            }
 
-        if(canAttack==false)
-        {
-            return;
         }
-
-        if(baseEnemyScript.distanceToplayer < 0.3f)
-        {
-            PlayerMovement.Instance.GetComponent<HealthAndDamage>().AcceptDamage();
-        }
-
-        canAttack = false;
-        StartCoroutine(AttackCoolDown(1));
     }
 
-    IEnumerator AttackCoolDown(float seconds)
-    {
-        yield return new WaitForSeconds(seconds);
-        canAttack = true;
-    }
 }
