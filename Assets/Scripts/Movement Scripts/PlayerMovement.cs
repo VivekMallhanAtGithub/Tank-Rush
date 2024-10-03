@@ -23,6 +23,9 @@ public class PlayerMovement : MonoBehaviour
 
     public float xp;
 
+    public GameObject muzzleFlashVFX;
+    public GameObject muzzleLocation;
+
     public void IAAccelerate(InputAction.CallbackContext context)
     {
         movementValues = context.ReadValue<Vector2>();
@@ -100,6 +103,8 @@ public class PlayerMovement : MonoBehaviour
 
         canShoot = false;
         StartCoroutine(ShootingCooldown(shootingCooldownTimer));
+
+        GameObject muzzleVFX = Instantiate(muzzleFlashVFX, muzzleLocation.transform.position, transform.rotation);
     }
 
     public void PlayerMovementDamageTakenSignal(float damage)
