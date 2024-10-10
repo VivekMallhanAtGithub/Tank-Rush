@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.ParticleSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject muzzleFlashVFX;
     public GameObject muzzleLocation;
+    private ParticleSystem muzzleParticleSystem;
 
     public void IAAccelerate(InputAction.CallbackContext context)
     {
@@ -52,6 +54,11 @@ public class PlayerMovement : MonoBehaviour
         }
         Debug.Log("Instance = " + this);
         hdComponent = GetComponent<HealthAndDamage>();
+
+        GameObject muzzleVFXObject = Instantiate(muzzleFlashVFX, muzzleLocation.transform.position, transform.rotation);
+        muzzleParticleSystem = muzzleFlashVFX.GetComponent<ParticleSystem>();
+
+        muzzleVFXObject.transform.SetParent(muzzleLocation.transform);
     }
 
     void FixedUpdate()
@@ -104,7 +111,12 @@ public class PlayerMovement : MonoBehaviour
         canShoot = false;
         StartCoroutine(ShootingCooldown(shootingCooldownTimer));
 
-        GameObject muzzleVFX = Instantiate(muzzleFlashVFX, muzzleLocation.transform.position, transform.rotation);
+        EmitParams emitParams = new EmitParams();
+        emitParams.position = muzzleLocation.transform.position;
+        //emitParams.;
+
+        muzzleParticleSystem.Emit(3);
+        Debug.Log("Count after shoot" + muzzleParticleSystem.particleCount);
     }
 
     public void PlayerMovementDamageTakenSignal(float damage)

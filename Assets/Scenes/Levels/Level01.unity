@@ -1815,8 +1815,10 @@ MonoBehaviour:
     type: 3}
   maxSpawnRadius: 50
   minSpawnRadius: 0
-  enemySpawnFrequency: 1
+  enemySpawnFrequency: 5
   spawnTimer: 0
+  bloodParticlesPrefab: {fileID: 198321120434662062, guid: 5656e7ea1f1a75d4c895547ec2b824b3,
+    type: 3}
 --- !u!4 &1811405466
 Transform:
   m_ObjectHideFlags: 0
@@ -2585,6 +2587,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8453647184360078559, guid: a72c45e6b6c76464c9075db6ae5f513f,
+        type: 3}
+      propertyPath: gameObject
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8453647184360078559, guid: a72c45e6b6c76464c9075db6ae5f513f,
+        type: 3}
+      propertyPath: muzzleFlashVFX
+      value: 
+      objectReference: {fileID: 1314945738539566, guid: 32c9fd11a72259d45aa26ae41c34c5aa,
+        type: 3}
     - target: {fileID: 8940540719987361825, guid: a72c45e6b6c76464c9075db6ae5f513f,
         type: 3}
       propertyPath: m_Name
