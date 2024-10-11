@@ -46,6 +46,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void IAPause(InputAction.CallbackContext context)
+    {
+        PauseMenuManager.Instance.ToggleGamePause();
+    }
+
     private void Awake()
     {
         if (Instance == null && Instance != this)

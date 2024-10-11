@@ -8,16 +8,11 @@ public class MainMenuManager : MonoBehaviour
 {
     public Button startButton;
     public Button quitButton;
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
-    }
+        startButton.onClick.AddListener(() => OnStartButtonPressed());
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        quitButton.onClick.AddListener(() => OnQuitButtonPressed());
     }
 
     public void OnStartButtonPressed()
